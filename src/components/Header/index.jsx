@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "../../assets/logo.png";
-import {Container, Menu, Li, SearchInput} from "./styles";
+import {Container, Menu, Li, SearchInput, Overlay} from "./styles";
 import { Link, useLocation } from "react-router-dom";
 import MenuLogo from "../../assets/menu.png";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,11 @@ function Header() {
   const [search, setSearch] = useState("")
 
   const navigate = useNavigate()
+  const location = useLocation()
   
+  useEffect(() => {
+  setViewMenu(false)
+}, [location])
 
   window.onscroll = () =>{
     if(!changeBackground && window.pageYOffset > 144){
@@ -52,6 +56,7 @@ function Header() {
         </Li>
 
       </Menu>
+      {viewMenu && <Overlay onClick={() => setIsOpen(false)} />}
       <img className='menu-logo' src={MenuLogo} onClick={()=>setViewMenu(prev=> !prev)}/>
       
     </Container>
