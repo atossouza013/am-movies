@@ -8,7 +8,11 @@ Projeto desenvolvido com foco em componentização, organização de código e e
 
  Demo
 
+<<<<<<< HEAD
 🔗 Em breve disponível (deploy na Vercel)
+=======
+(https://am-movies-xi.vercel.app/)
+>>>>>>> bff384a1a35f94b8384ea5e7c3a88752440bdbca
 
 ---
 
@@ -47,3 +51,41 @@ src/
 ├── services/
 ├── styles/
 └── routes/
+<<<<<<< HEAD
+=======
+
+
+---
+
+## Como rodar o projeto
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/atossouza013/am-movies.git
+
+## Instale as dependências:
+npm install
+
+## Variáveis de Ambiente
+
+Crie um arquivo .env na raiz do projeto:
+
+VITE_API_KEY=sua_chave_da_tmdb
+
+## Objetivo do Projeto
+
+Este projeto foi desenvolvido para praticar:
+
+Consumo de API externa
+
+Organização de arquitetura em React
+
+Componentização
+
+Responsividade
+
+Experiência do usuário
+
+Versionamento com Git
+>>>>>>> bff384a1a35f94b8384ea5e7c3a88752440bdbca
