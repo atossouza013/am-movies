@@ -8,7 +8,7 @@ Projeto desenvolvido com foco em componentização, organização de código e e
 
  Demo
 
-🔗 Em breve disponível (deploy na Vercel)
+(https://am-movies-xi.vercel.app/)
 
 ---
 
