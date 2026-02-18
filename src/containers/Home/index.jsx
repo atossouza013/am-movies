@@ -91,7 +91,7 @@ function Home() {
             />
           )}
         
-        {topPerson && <Slider info={topPerson} title={"Top Atores e Atrizes"} />}
+        {topPerson && <Slider info={topPerson} title={"Top Atores e Atrizes"} onClick={(person) => navigate(`/detail/person/${person.id}`)}/>}
         </SectionSlider>
       </RevealOnScroll>
     </PageWrapper>

@@ -85,7 +85,7 @@ export default function Movies() {
             <Slider
               title="No Ar"
               info={upcoming}
-              onClick={(serie) => navigate(`/detail/movie/${serie.id}`)}
+              onClick={(serie) => navigate(`/detail/tv/${serie.id}`)}
             />
           </section>
         </RevealOnScroll>

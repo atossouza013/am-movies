@@ -35,6 +35,7 @@ export const Container = styled.div`
     img {
       width: 180px; /* logo maior */
       max-width: 60%;
+      z-index: 3000;
     }
 
     .menu-logo {

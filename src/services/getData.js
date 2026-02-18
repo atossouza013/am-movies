@@ -63,3 +63,14 @@ export const searchMovies = async (query) => {
   })
   return data.results
 }
+
+
+export async function getPersonDetails(id) {
+  const { data } = await api.get(`/person/${id}`)
+  return data
+}
+
+export async function getPersonCredits(id) {
+  const { data } = await api.get(`/person/${id}/combined_credits`)
+  return data.cast
+}

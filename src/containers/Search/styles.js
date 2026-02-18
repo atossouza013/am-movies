@@ -1,71 +1,76 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 100px;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 120px 5% 60px;
 
-  h2 {
-    color: #ff005b;
-    text-transform: capitalize;
-    margin-bottom: 10px;
+  h1 {
+    font-size: 32px;
+    margin-bottom: 40px;
   }
-`;
+`
 
 export const Content = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: 10px;
-  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
 
-  @media(max-width: 630px){
-     grid-template-columns: repeat(2, 1fr);
-     margin: 0px 20px;;
-     gap: 10px;
+  @media (max-width: 630px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
   }
 `;
 export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
-  padding: 5px;
-  gap: 3px;
-  text-align: center;
-  transition: all 0.3s ease;
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover{
-      transform: scale(1.05) rotate(0deg) translate(0px, -5px) skewX(0deg);
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  filter: brightness(1); 
-  }
-
-  p {
-    color: #ff005b;
-    font-weight: 500;
-    width: 200px; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis;
-  }
   img {
     width: 100%;
-    border-radius: 10px;
-    height: 100%;
+    height: 270px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
   }
 
-   @media(max-width: 630px){
-     margin: 10px 10px;
-     img{
-          width: 150px;
-     }
+  &:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 30px rgba(255, 0, 91, 0.5);
+  }
 
-     p{
-          font-size: 10px;
-     }
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 630px) {
+    img {
+      height: 220px;
+    }
   }
 `;
+
+export const CardInfo = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95),
+    transparent
+  );
+
+  h3 {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  span {
+    font-size: 12px;
+    color: #ff005b;
+    font-weight: 600;
+  }
+`

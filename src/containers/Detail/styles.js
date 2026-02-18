@@ -19,21 +19,26 @@ const fadeIn = keyframes`
 `;
 
 export const Background = styled.div`
-  background-image: url(${(props) => props.$image});
-  height: 50vh;
+height: 50vh;
+  position: relative;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
+
+  background-image: ${({ $isPerson, $image }) =>
+    $isPerson ? "none" : `url(${$image})`};
+
+  background-color: ${({ $isPerson }) =>
+    $isPerson ? "#000" : "transparent"};
 
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: hsla(0, 0%, 0%, 0.63);
+    inset: 0;
+    background-color: ${({ $isPerson }) =>
+      $isPerson
+        ? "transparent"
+        : "hsla(0, 0%, 0%, 0.63)"};
   }
 
   &::after {
@@ -43,16 +48,20 @@ export const Background = styled.div`
     left: 0;
     width: 100%;
     height: 120px;
-    background-image: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+    background-image: linear-gradient(
+      to top,
+      #000000,
+      rgba(0, 0, 0, 0)
+    );
   }
 
   @media (max-width: 1024px) {
-  height: 40vh;
-}
+    height: 40vh;
+  }
 
-@media (max-width: 768px) {
-  height: 35vh;
-}
+  @media (max-width: 768px) {
+    height: 35vh;
+  }
 `;
 
 export const Container = styled.div`
@@ -64,25 +73,25 @@ export const Container = styled.div`
   max-width: 1500px;
   margin-top: -100px;
 
-   opacity: ${({ $loading }) => ($loading ? 0 : 1)};
+  opacity: ${({ $loading }) => ($loading ? 0 : 1)};
   transform: ${({ $loading }) =>
     $loading ? "translateY(20px)" : "translateY(0)"};
 
   transition: all 0.6s ease;
 
   @media (max-width: 1024px) {
-  margin-top: -60px;
-  padding: 0 30px;
-}
+    margin-top: -60px;
+    padding: 0 30px;
+  }
 
-@media (max-width: 768px) {
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  margin-top: -40px;
-  padding: 0 20px;
-  gap: 20px;
-}
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: -40px;
+    padding: 0 20px;
+    gap: 20px;
+  }
 `;
 
 export const Cover = styled.div`
@@ -100,16 +109,16 @@ export const Cover = styled.div`
   }
 
   @media (max-width: 1024px) {
-  img {
-    width: 350px;
+    img {
+      width: 350px;
+    }
   }
-}
 
-@media (max-width: 768px) {
-  img {
-    width: 220px;
+  @media (max-width: 768px) {
+    img {
+      width: 220px;
+    }
   }
-}
 `;
 
 export const Info = styled.div`
@@ -138,31 +147,41 @@ export const Info = styled.div`
     margin-bottom: 20px;
   }
 
+  .birthday {
+    font-size: 18px;
+    margin: 25px 0px 0px 0px;
+  }
+
+  .local-birth {
+    font-size: 18px;
+    margin: 5px 0px 20px 0px;
+  }
+
   @media (max-width: 1024px) {
-  width: 60%;
-}
-
-@media (max-width: 768px) {
-  width: 100%;
-  align-items: center;
-  text-align: center;
-
-  h2 {
-    font-size: 22px;
+    width: 60%;
   }
 
-  p {
-    font-size: 15px;
+  @media (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 15px;
+    }
   }
-}
 `;
 
 export const SectionSlider = styled.section`
   padding: 40px 5%;
 
   @media (max-width: 768px) {
-  padding: 30px 20px;
-}
+    padding: 30px 20px;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -175,7 +194,7 @@ export const TrailerSection = styled.div`
   flex-direction: column;
   align-items: end;
   margin-top: -200px;
-  
+
   h2 {
     margin-bottom: 20px;
     color: #fff;
@@ -190,23 +209,23 @@ export const TrailerSection = styled.div`
   }
 
   @media (max-width: 1024px) {
-  iframe {
-    width: 70%;
-    height: 400px;
-  }
-}
-
-@media (max-width: 768px) {
-  align-items: center;
-  margin-top: 40px;
-
-  h2 {
-    text-align: center;
+    iframe {
+      width: 70%;
+      height: 400px;
+    }
   }
 
-  iframe {
-    width: 100%;
-    height: 220px;
+  @media (max-width: 768px) {
+    align-items: center;
+    margin-top: 40px;
+
+    h2 {
+      text-align: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 220px;
+    }
   }
-}
 `;

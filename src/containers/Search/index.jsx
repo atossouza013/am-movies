@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { searchMovies } from "../../services/getData";
-import { Card, Container, Content } from "./styles";
-import PageWrapper from "../../components/PageWrapper"
+import { Card, CardInfo, Container, Content } from "./styles";
+import PageWrapper from "../../components/PageWrapper";
+import { getImages } from "../../utils/getImages";
 
 function Search() {
   const [searchParams] = useSearchParams();
@@ -24,26 +25,52 @@ function Search() {
   }, [query]);
 
   return (
-    <PageWrapper>
-      <Container >
-        <h2>Resultados para: {query}</h2>
-        <Content>
-          {results.map((item) => (
+  <PageWrapper>
+    <Container>
+      <h1>Resultados para: {query}</h1>
+
+      <Content>
+        {results.map((item) => {
+          const imagePath =
+            item.media_type === "person"
+              ? item.profile_path
+              : item.poster_path;
+
+          return (
             <Card
-              key={item.id}
-              onClick={() => navigate(`/detail/${item.media_type}/${item.id}`)}
+              key={`${item.media_type}-${item.id}`}
+              onClick={() =>
+                navigate(`/detail/${item.media_type}/${item.id}`)
+              }
             >
               <img
-                src={`https://image.tmdb.org/t/p/w300${item.poster_path}`}
-                alt={item.title}
+                src={
+                  imagePath
+                    ? getImages(imagePath)
+                    : "/placeholder.png"
+                }
+                alt={item.title || item.name}
               />
-              <p>{item.name||item.title}</p>
+
+              <CardInfo>
+                <h3>{item.title || item.name}</h3>
+
+                <span>
+                  {item.media_type === "person"
+                    ? "Ator/Atriz"
+                    : item.media_type === "movie"
+                    ? "Filme"
+                    : "Série"}
+                </span>
+              </CardInfo>
             </Card>
-          ))}
-        </Content>
-      </Container>
-    </PageWrapper>
-  );
+          );
+        })}
+      </Content>
+    </Container>
+  </PageWrapper>
+);
+
 }
 
 export default Search;
